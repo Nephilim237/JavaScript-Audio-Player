@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #000;
+}
+
+html,
+body,
+.container {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.music-container {
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background:linear-gradient(0deg, #000, #262626);
+    border-radius: 50%;
+}
+
+.music-container::before,
+.music-container::after {
+    content: '';;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: linear-gradient(
+        45deg,
+        #ff00ee,
+        #0000ff,
+        #00ff00,
+        #ff0000,
+        #ff00ee,
+        #0000ff,
+        #00ff00,
+        #ffff00,
+        #ff0000
+    );
+    background-size: 400%;
+    max-width: calc(400px + 4px);
+    width: calc(400px + 4px);
+    max-height: calc(400px + 4px);
+    height: calc(400px + 4px);
+    border-radius: 50%;
+    z-index: -1;
+    animation: animate 20s linear infinite;
+}
+
+.music-container::after {
+    filter: blur(28px);
+}
+
+.disable-animation::before,
+.disable-animation::after {
+    animation-play-state: paused;
+}
+
+#player {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.music-info {
+    overflow: hidden;
+}
+
+#title {
+    color: #fff;
+    margin: 0 0 .5rem;
+}
+
+.img-container {
+    position: relative;
+    width: 120px;
+    margin: 0.5rem 0;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s ease-in-out, visibilty .3s ease-in-out;
+}
+
+.img-container img {
+    width: 100%;
+    border-radius: 50%;
+
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.player.play .img-container img {
+    animation-play-state: running;
+    visibility: visible;
+    opacity: 1;
+}
+
+.player.stop .img-container img {
+    animation: none;
+    animation-play-state: initial;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.img-container::before,
+.img-container::after {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+}
+
+.img-container::before {
+    top: -2px;
+    left: -2px;
+    max-width: calc(120px + 4px);
+    width: calc(120px + 4px);
+    max-height: calc(120px + 4px);
+    height: calc(120px + 4px);
+    background: #d00076;
+    z-index: -1;
+}
+
+.img-container::after {
+    top: 50%;
+    left: 50%;
+    background-color: #0e0d0d;
+    max-width: 10px;
+    width: 10px;
+    max-height: 10px;
+    height: 10px;
+    border: 1px solid #d00076;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+}
+
+.progress-container, .vol-container {
+    background: #232323;
+    height: 4px;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.vol-container {
+    width: 75%;
+}
+
+.progress, .vol-progress {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100%;
+    width: 0;
+    transition: width .1s linear;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .5rem 0;
+    z-index: 1;
+}
+
+.vol-bar {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -10px;
+    padding: 5px 0 0;
+}
+
+button {
+    background: #000;
+    background: linear-gradient(0deg, #000, #262626);
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    margin: 0 .15rem;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 32px;
+}
+
+button:hover,
+button:active,
+button:focus {
+    box-shadow: 0 0 8px 0 #ffffff61;
+}
+
+#loop {
+    margin-bottom: -1rem;
+    margin-top: 1rem;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes rotate {
+    from  {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

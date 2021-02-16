@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <title>Audio Player</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="music-container disable-animation" id="music-container">
+                <div id="player" class="player">
+                    <div class="music-info">
+                        <h4 id="title">Linkin park</h4>
+                    </div>
+                    <div class="img-container">
+                        <img src="cover/Linkin Park - Wasteland.jpg" alt="Linkin Park Cover" id="cover">
+                    </div>
+                    <div class="player-controls">
+                        <button id="prev"><i class="fas fa-backward"></i></button>
+                        <button id="play"><i class="fas fa-play"></i></button>
+                        <button id="next"><i class="fas fa-forward"></i></button>
+                        <button id="stop"><i class="fas fa-stop"></i></button>
+                    </div>
+
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+
+                    <audio src="music/Linkin Park - Wasteland.mp3" id="audio"></audio>
+
+                    <div class="vol-bar" id="vol-bar">
+                        <button id="vol-down"><i class="fas fa-volume-down"></i></button>
+                        <div class="vol-container" id="vol-container">
+                            <div class="vol-progress" id="vol-progress"></div>
+                        </div>
+                        <button id="vol-up"><i class="fas fa-volume-up"></i></button>
+                    </div>
+
+                    <div class="loop">
+                        <button id="loop"><i class="fas fa-redo"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+</html>
